@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shroomtop420™ | 100 Hidden Web Tools</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html, body { height: 100%; margin: 0; background: #0f172a; color: #f1f5f9; }
+    .card:hover { @apply bg-gray-700; }
+    ::placeholder { color: #94a3b8; }
+  </style>
+</head>
+<body class="flex flex-col h-full">
+  <header class="bg-gray-900 p-4 text-center text-2xl font-bold">
+    Shroomtop420™ — 100 Hidden Web Tools
+  </header>
+  <div class="p-4">
+    <input
+      id="search"
+      type="text"
+      placeholder="Search tools…"
+      class="w-full p-2 rounded bg-gray-800 focus:outline-none focus:ring focus:border-blue-500"
+    />
+  </div>
+  <main class="flex-1 overflow-auto p-4">
+    <div id="grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
+  </main>
+
+  <script>
+    const links = [
+      { name: "DevDocs", url: "https://devdocs.io/" },
+      { name: "DevHints", url: "https://devhints.io/" },
+      { name: "Regex101", url: "https://regex101.com/" },
+      { name: "Carbon", url: "https://carbon.now.sh/" },
+      { name: "CodePen", url: "https://codepen.io/" },
+      { name: "JSFiddle", url: "https://jsfiddle.net/" },
+      { name: "StackBlitz", url: "https://stackblitz.com/" },
+      { name: "Glitch", url: "https://glitch.com/" },
+      { name: "Replit", url: "https://replit.com/" },
+      { name: "CodeSandbox", url: "https://codesandbox.io/" },
+      { name: "Exercism", url: "https://exercism.io/" },
+      { name: "OverAPI", url: "https://overapi.com/" },
+      { name: "MDN Web Docs", url: "https://developer.mozilla.org/" },
+      { name: "FreeCodeCamp", url: "https://www.freecodecamp.org/" },
+      { name: "W3Schools", url: "https://www.w3schools.com/" },
+      { name: "TutorialsPoint", url: "https://www.tutorialspoint.com/" },
+      { name: "GeeksforGeeks", url: "https://www.geeksforgeeks.org/" },
+      { name: "Hackr.io", url: "https://hackr.io/" },
+      { name: "Coursera", url: "https://www.coursera.org/" },
+      { name: "edX", url: "https://www.edx.org/" },
+      { name: "Dribbble", url: "https://dribbble.com/" },
+      { name: "Behance", url: "https://www.behance.net/" },
+      { name: "Coolors", url: "https://coolors.co/" },
+      { name: "Color Hunt", url: "https://colorhunt.co/" },
+      { name: "UI Movement", url: "https://uimovement.com/" },
+      { name: "UXPin", url: "https://www.uxpin.com/" },
+      { name: "Figma", url: "https://www.figma.com/" },
+      { name: "Adobe XD", url: "https://www.adobe.com/products/xd.html" },
+      { name: "InVision", url: "https://www.invisionapp.com/" },
+      { name: "Sketch", url: "https://www.sketch.com/" },
+      { name: "Notion", url: "https://www.notion.so/" },
+      { name: "Trello", url: "https://trello.com/" },
+      { name: "Asana", url: "https://asana.com/" },
+      { name: "Slack", url: "https://slack.com/" },
+      { name: "Zapier", url: "https://zapier.com/" },
+      { name: "IFTTT", url: "https://ifttt.com/" },
+      { name: "RescueTime", url: "https://www.rescuetime.com/" },
+      { name: "Toggl", url: "https://toggl.com/" },
+      { name: "Evernote", url: "https://evernote.com/" },
+      { name: "Pocket", url: "https://getpocket.com/" },
+      { name: "Can I use", url: "https://caniuse.com/" },
+      { name: "BrowserStack", url: "https://www.browserstack.com/" },
+      { name: "Responsively", url: "https://responsively.app/" },
+      { name: "PageSpeed Insights", url: "https://developers.google.com/speed/pagespeed/insights/" },
+      { name: "Web.dev", url: "https://web.dev/" },
+      { name: "Lighthouse", url: "https://developer.chrome.com/docs/lighthouse/" },
+      { name: "Pingdom", url: "https://www.pingdom.com/" },
+      { name: "GTmetrix", url: "https://gtmetrix.com/" },
+      { name: "BuiltWith", url: "https://builtwith.com/" },
+      { name: "Wappalyzer", url: "https://www.wappalyzer.com/" },
+      { name: "Hugging Face", url: "https://huggingface.co/" },
+      { name: "OpenAI", url: "https://openai.com/" },
+      { name: "TensorFlow", url: "https://www.tensorflow.org/" },
+      { name: "Keras", url: "https://keras.io/" },
+      { name: "PyTorch", url: "https://pytorch.org/" },
+      { name: "Scikit-learn", url: "https://scikit-learn.org/" },
+      { name: "Fast.ai", url: "https://www.fast.ai/" },
+      { name: "Colab", url: "https://colab.research.google.com/" },
+      { name: "Kaggle", url: "https://www.kaggle.com/" },
+      { name: "AI Dungeon", url: "https://play.aidungeon.io/" },
+      { name: "Have I Been Pwned", url: "https://haveibeenpwned.com/" },
+      { name: "PrivacyTools", url: "https://www.privacytools.io/" },
+      { name: "DuckDuckGo", url: "https://duckduckgo.com/" },
+      { name: "ProtonMail", url: "https://protonmail.com/" },
+      { name: "Tails", url: "https://tails.boum.org/" },
+      { name: "Signal", url: "https://signal.org/" },
+      { name: "Tor Project", url: "https://www.torproject.org/" },
+      { name: "HTTPS Everywhere", url: "https://www.eff.org/https-everywhere" },
+      { name: "uBlock Origin", url: "https://github.com/gorhill/uBlock" },
+      { name: "CryptPad", url: "https://cryptpad.fr/" },
+      { name: "SourceGraph", url: "https://sourcegraph.com/" },
+      { name: "BundlePhobia", url: "https://bundlephobia.com/" },
+      { name: "PWA Builder", url: "https://www.pwabuilder.com/" },
+      { name: "BetaList", url: "https://betalist.com/" },
+      { name: "SiteSpeed.io", url: "https://www.sitespeed.io/" },
+      { name: "Upshotland", url: "https://upshotland.com/" },
+      { name: "HTTPie", url: "https://httpie.io/" },
+      { name: "ReqBin", url: "https://reqbin.com/" },
+      { name: "Beeceptor", url: "https://beeceptor.com/" },
+      { name: "webhook.site", url: "https://webhook.site/" },
+      { name: "JWT.io", url: "https://jwt.io/" },
+      { name: "ngrok", url: "https://ngrok.com/" },
+      { name: "LocalTunnel", url: "https://localtunnel.github.io/www/" },
+      { name: "tmate", url: "https://tmate.io/" },
+      { name: "asciinema", url: "https://asciinema.org/" },
+      { name: "Hoppscotch", url: "https://hoppscotch.io/" },
+      { name: "Polygon.io", url: "https://polygon.io/" },
+      { name: "OpenAPI Directory", url: "https://www.openapidirectory.com/" },
+      { name: "Public APIs", url: "https://public-apis.io/" },
+      { name: "Plotly Chart Studio", url: "https://chart-studio.plotly.com/" },
+      { name: "Datawrapper", url: "https://www.datawrapper.de/" },
+      { name: "Quandl", url: "https://www.quandl.com/" },
+      { name: "Shodan", url: "https://www.shodan.io/" },
+      { name: "Coderwall", url: "https://coderwall.com/" },
+      { name: "Codewars", url: "https://www.codewars.com/" },
+      { name: "SonarCloud", url: "https://sonarcloud.io/" },
+      { name: "Codecov", url: "https://codecov.io/" },
+      { name: "Sentry", url: "https://sentry.io/" },
+      { name: "LogRocket", url: "https://logrocket.com/" }
+    ];
+
+    const grid = document.getElementById("grid");
+    const render = (list) => {
+      grid.innerHTML = "";
+      list.forEach((link, i) => {
+        const a = document.createElement("a");
+        a.href = link.url;
+        a.target = "_blank";
+        a.rel = "noopener";
+        a.className = "card block p-4 bg-gray-800 rounded shadow hover:shadow-lg transition";
+        a.innerHTML = `<div class="font-semibold">${i+1}. ${link.name}</div><div class="text-xs text-gray-400">${link.url}</div>`;
+        grid.appendChild(a);
+      });
+    };
+
+    // initial render
+    render(links);
+
+    // search filter
+    document.getElementById("search").addEventListener("input", e => {
+      const q = e.target.value.toLowerCase();
+      render(links.filter(l => l.name.toLowerCase().includes(q) || l.url.includes(q)));
+    });
+  </script>
+</body>
+</html>
