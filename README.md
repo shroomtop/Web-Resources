@@ -1,7 +1,7 @@
 # Web-Resources
 
 A zero-bloat front-end arsenal.  
-Snippets, templates, playgrounds — everything you’d bookmark but never organize. Now offline. Now yours.
+Snippets, templates, playgrounds—everything you’d bookmark but never organize. Now offline. Now yours.
 
 ## ⚡ Instant Use
 
@@ -38,8 +38,8 @@ Web-Resources/
 
 ## 💡 Why This Exists
 
-You waste time googling the same tools.  
-This repo is a loaded offline vault — everything works from local storage.
+Stop wasting time googling the same tools.  
+This repo is an offline vault—everything works locally.
 
 ## 🤖 Deploy as GitHub Page
 
@@ -48,7 +48,7 @@ You're live.
 
 ## 👇 Contribute
 
-PRs welcome. Must be:
+PRs welcome. Requirements:
 - Browser-native
 - Offline-safe
 - No external CDNs

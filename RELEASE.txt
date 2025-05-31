@@ -1,0 +1,6 @@
+Tag: v1.0.0
+Title: Initial Vault Release
+Notes:
+- Core directory scaffold
+- Offline index.html + tools
+- MIT license + CI + README

@@ -1,0 +1,1 @@
+Curated offline-first HTML/CSS/JS resource toolkit for developers.
